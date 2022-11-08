@@ -2,13 +2,13 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import NavHeader from '../HeaderCustom/NavHeader'
 
-const DetailsScreen = () => {
+const NotificationScreen = () => {
     return (
         <View style={{ flex: 1 }}>
             <NavHeader />
-            <Text>DetailsScreen</Text>
+            <Text>NotificationScreen</Text>
         </View>
     )
 }
 
-export default DetailsScreen
+export default NotificationScreen

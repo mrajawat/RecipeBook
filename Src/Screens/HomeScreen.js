@@ -1,10 +1,14 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import NavHeader from '../HeaderCustom/NavHeader'
 
 const HomeScreen = () => {
     return (
-        <View>
-            <Text>HomeScreen</Text>
+        
+        <View style={{flex:1}}>
+            
+            <NavHeader />
+            <Text >HomeScreen</Text>
         </View>
     )
 }
