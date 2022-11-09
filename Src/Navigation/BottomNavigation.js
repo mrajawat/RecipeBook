@@ -7,11 +7,11 @@ import Feather from 'react-native-vector-icons/Feather'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 //Screens
-import HomeScreen from '../Screens/HomeScreen';
-import DetailScreen from '../Screens/DetailsScreen';
-import SearchScreen from '../Screens/SearchScreen';
-import NotificationScreen from '../Screens/NotificationScreen';
-import AddScreen from '../Screens/AddScreen';
+import HomeScreen from '../screens/HomeScreen';
+import DetailScreen from '../screens/DetailsScreen';
+import SearchScreen from '../screens/SearchScreen';
+import NotificationScreen from '../screens/NotificationScreen';
+import AddScreen from '../screens/AddScreen';
 
 //Screennames
 const Home = 'Home';

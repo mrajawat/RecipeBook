@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import NavHeader from '../HeaderCustom/NavHeader'
+import NavHeader from '../headerCustom/NavHeader'
 
 const NotificationScreen = () => {
     return (
