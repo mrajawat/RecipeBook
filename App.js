@@ -1,13 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import BottomNavigation from './Src/Navigation/BottomNavigation';
+import React from 'react';
+import {AppProvider} from './src/context/AppContext';
+import Routes from './src/navigation/Routes';
 
 const App = () => {
-  return (
+    return (
+        <AppProvider>
+            <Routes />
+        </AppProvider>
+    );
+};
 
-    <BottomNavigation />
-
-  )
-}
-
-export default App
+export default App;

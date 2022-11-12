@@ -1,14 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import NavHeader from '../HeaderCustom/NavHeader'
+import React from 'react';
+import {Text, View} from 'react-native';
 
 const AddScreen = () => {
     return (
-        <View style={{ flex: 1 }}>
-            <NavHeader />
+        <View style={{flex: 1}}>
             <Text>AddScreen</Text>
         </View>
-    )
-}
+    );
+};
 
-export default AddScreen
+export default AddScreen;

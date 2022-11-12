@@ -1,16 +1,14 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import NavHeader from '../HeaderCustom/NavHeader'
+import React from 'react';
+import {Text, View} from 'react-native';
+import MainHeader from '../components/MainHeader';
 
 const HomeScreen = () => {
     return (
-        
-        <View style={{flex:1}}>
-            
-            <NavHeader />
-            <Text >HomeScreen</Text>
+        <View style={{flex: 1}}>
+            <MainHeader />
+            <Text>HomeScreen</Text>
         </View>
-    )
-}
+    );
+};
 
-export default HomeScreen
+export default HomeScreen;

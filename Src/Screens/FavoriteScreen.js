@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-const SearchScreen = () => {
+const FavoriteScreen = () => {
     return (
         <View style={{flex: 1}}>
-            <Text>SearchScreen</Text>
+            <Text>FavoriteScreen</Text>
         </View>
     );
 };
 
-export default SearchScreen;
+export default FavoriteScreen;
