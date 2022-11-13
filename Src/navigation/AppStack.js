@@ -6,16 +6,15 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AddScreen from '../screens/AddScreen';
 import DetailScreen from '../screens/DetailsScreen';
 import FavoriteScreen from '../screens/FavoriteScreen';
-import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
-import { HomeStackScreen } from './StackScreens';
+import {HomeStackScreen} from './StackScreens';
 
 const Tab = createBottomTabNavigator();
 
 const AppStack = () => {
     return (
         <Tab.Navigator
-            initialRouteName="Home"
+            initialRouteName="Add"
             screenOptions={({route}) => ({
                 headerShown: false,
                 tabBarActiveTintColor: '#000',
