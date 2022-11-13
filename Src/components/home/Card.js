@@ -1,4 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
+import moment from 'moment';
 import React, {useState} from 'react';
 import {
     Image,
@@ -13,23 +14,23 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 const Card = ({data}) => {
     const [like, setLike] = useState(false);
     const navigation = useNavigation();
+
     return (
         <Pressable
             onPress={() => navigation.navigate('CardView', {data: data})}
             style={styles.Container}>
             <View style={styles.InnerContainer}>
                 <Image
-                    source={require('../../assets/images/food1.jpg')}
+                    source={{uri: data.image}}
                     style={styles.ImageContainer}
                 />
-                <Text style={styles.HeadingText}>{data.heading}</Text>
-                <Text style={styles.Text}>
-                    {data.text}
-                    this is a some sample text that i use to create vsdv sds sd
-                    sdgs d this is a some sample text that i use to create this
-                    is a some sample text that i use to create vsdv sds sd sdgs
-                    d this is a some sample text that i use to create
-                </Text>
+                <View style={styles.HeadingTextContainer}>
+                    <Text style={styles.HeadingText}>{data.heading}</Text>
+                    <Text style={styles.DateText}>
+                        {moment(data.postTime.toDate()).fromNow()}
+                    </Text>
+                </View>
+                <Text style={styles.Text}>{data.recipe}</Text>
             </View>
             <TouchableOpacity
                 onPress={() => setLike(!like)}
@@ -64,11 +65,20 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '60%',
     },
+    HeadingTextContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
     HeadingText: {
         paddingVertical: 5,
         paddingHorizontal: 10,
         fontSize: 22,
         fontWeight: '800',
+    },
+    DateText: {
+        fontSize: 12,
+        paddingVertical: 5,
+        paddingHorizontal: 10,
     },
     Text: {
         fontSize: 15,

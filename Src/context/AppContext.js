@@ -10,6 +10,7 @@ export const AppProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [uploading, setUploading] = useState(false);
     const [transferred, setTransferred] = useState(0);
+    const [added, setAdded] = useState(false)
 
     const register = async (email, password, name) => {
         try {
@@ -68,7 +69,6 @@ export const AppProvider = ({children}) => {
 
         try {
             await task;
-
             const imageUrl = await storageRef.getDownloadURL();
 
             firestore()
@@ -85,6 +85,7 @@ export const AppProvider = ({children}) => {
             
             setUploading(false);
             Alert.alert('Recipe Uploaded!', 'Your recipe uploaded successfully');
+            setAdded(true);
         } catch (error) {
             console.log(error);
         }
@@ -101,6 +102,8 @@ export const AppProvider = ({children}) => {
                 addPost,
                 uploading,
                 transferred,
+                added,
+                setAdded,
             }}>
             {children}
         </AppContext.Provider>

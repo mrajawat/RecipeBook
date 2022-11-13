@@ -83,6 +83,7 @@ const AddScreen = () => {
                             placeholder="Enter Your Recipe"
                             autoCapitalize="sentences"
                             keyboardType="default"
+                            autoCorrect={false}
                             multiline
                             numberOfLines={5}
                             value={recipe}

@@ -1,27 +1,27 @@
+import moment from 'moment';
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import SubHeader from '../components/custom/SubHeader';
 
 const CardView = ({route}) => {
     const {data} = route.params;
-    console.log(data);
+
     return (
         <View style={styles.Container}>
             <SubHeader title="Post" />
-            <View style={styles.InnerContainer}>
+            <ScrollView contentContainerStyle={styles.InnerContainer}>
                 <Image
-                    source={require('../assets/images/food1.jpg')}
+                    source={{uri: data.image}}
                     style={styles.ImageContainer}
                 />
-                <Text style={styles.HeadingText}>{data.heading}</Text>
-                <Text style={styles.Text}>
-                    {data.text}
-                    this is a some sample text that i use to create vsdv sds sd
-                    sdgs d this is a some sample text that i use to create this
-                    is a some sample text that i use to create vsdv sds sd sdgs
-                    d this is a some sample text that i use to create
-                </Text>
-            </View>
+                <View style={styles.HeadingTextContainer}>
+                    <Text style={styles.HeadingText}>{data.heading}</Text>
+                    <Text style={styles.DateText}>
+                        {moment(data.postTime.toDate()).fromNow()}
+                    </Text>
+                </View>
+                <Text style={styles.Text}>{data.recipe}</Text>
+            </ScrollView>
         </View>
     );
 };
@@ -35,11 +35,16 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
     InnerContainer: {
-        flex: 1,
+        paddingVertical: 5,
+        paddingBottom: 20,
     },
     ImageContainer: {
         width: '100%',
-        height: '60%',
+        height: 300,
+    },
+    HeadingTextContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     HeadingText: {
         paddingVertical: 5,
@@ -47,16 +52,13 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: '800',
     },
+    DateText: {
+        fontSize: 12,
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+    },
     Text: {
         fontSize: 15,
         paddingHorizontal: 10,
-        height: 42,
-    },
-    Icon: {
-        position: 'absolute',
-        top: 10,
-        right: 10,
-        zIndex: 10,
-        elevation: 5,
     },
 });
