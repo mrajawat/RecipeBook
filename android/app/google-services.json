@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "822974721296",
+    "project_id": "recipe-book-62c7c",
+    "storage_bucket": "recipe-book-62c7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822974721296:android:aee5bdd78d07b5a16a0995",
+        "android_client_info": {
+          "package_name": "com.trainingproj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822974721296-ar14u2qts7up1qv1ehf40jrf7orfit48.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt_U_QTnK3go4yxt-h4kkaZ-kyzsbdjtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822974721296-ar14u2qts7up1qv1ehf40jrf7orfit48.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
