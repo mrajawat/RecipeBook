@@ -1,25 +1,16 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {
-    Image,
-    Pressable,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React from 'react';
+import {Image, StyleSheet, Text, View} from 'react-native';
+import SubHeader from '../components/custom/SubHeader';
 
-const Card = ({data}) => {
-    const [like, setLike] = useState(false);
-    const navigation = useNavigation();
+const CardView = ({route}) => {
+    const {data} = route.params;
+    console.log(data);
     return (
-        <Pressable
-            onPress={() => navigation.navigate('CardView', {data: data})}
-            style={styles.Container}>
+        <View style={styles.Container}>
+            <SubHeader title="Post" />
             <View style={styles.InnerContainer}>
                 <Image
-                    source={require('../../assets/images/food1.jpg')}
+                    source={require('../assets/images/food1.jpg')}
                     style={styles.ImageContainer}
                 />
                 <Text style={styles.HeadingText}>{data.heading}</Text>
@@ -31,31 +22,17 @@ const Card = ({data}) => {
                     d this is a some sample text that i use to create
                 </Text>
             </View>
-            <TouchableOpacity
-                onPress={() => setLike(!like)}
-                activeOpacity={0.8}
-                style={styles.Icon}>
-                <Ionicons
-                    name={like ? 'heart' : 'heart-outline'}
-                    size={35}
-                    color={like ? 'red' : 'black'}
-                />
-            </TouchableOpacity>
-        </Pressable>
+        </View>
     );
 };
 
-export default Card;
+export default CardView;
 
 const styles = StyleSheet.create({
     Container: {
-        width: '100%',
-        height: 240,
-        borderRadius: 5,
-        elevation: 5,
+        flex: 1,
         backgroundColor: '#fff',
         overflow: 'hidden',
-        marginBottom: 10,
     },
     InnerContainer: {
         flex: 1,

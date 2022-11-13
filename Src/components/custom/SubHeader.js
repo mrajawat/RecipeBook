@@ -12,7 +12,7 @@ const SubHeader = ({title}) => {
                 backgroundColor: '#fff',
                 justifyContent: 'space-between',
                 paddingHorizontal: 20,
-                paddingVertical: 10,
+                paddingVertical: 5,
             }}>
             <Ionicons
                 name="arrow-back"
@@ -21,6 +21,7 @@ const SubHeader = ({title}) => {
                 onPress={() => {
                     navigation.goBack();
                 }}
+                style={{padding: 5, paddingHorizontal: 10}}
             />
             <Text style={{fontSize: 20, fontWeight: 'bold', color: 'black'}}>
                 {title}
@@ -32,6 +33,7 @@ const SubHeader = ({title}) => {
                 onPress={() => {
                     console.log('Info');
                 }}
+            style={{padding: 5, paddingHorizontal: 10}}
             />
         </View>
     );
