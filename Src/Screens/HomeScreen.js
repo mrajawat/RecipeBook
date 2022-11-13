@@ -1,13 +1,19 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import MainHeader from '../components/MainHeader';
+import {SafeAreaView, ScrollView} from 'react-native';
+import MainHeader from '../components/custom/MainHeader';
+import Card from '../components/home/Card';
 
 const HomeScreen = () => {
     return (
-        <View style={{flex: 1}}>
+        <SafeAreaView style={{flex: 1, backgroundColor: '#eee'}}>
             <MainHeader />
-            <Text>HomeScreen</Text>
-        </View>
+            <ScrollView
+                contentContainerStyle={{paddingHorizontal: 5, paddingTop: 10}}>
+                <Card />
+                <Card />
+                <Card />
+            </ScrollView>
+        </SafeAreaView>
     );
 };
 

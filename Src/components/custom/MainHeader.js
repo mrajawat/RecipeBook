@@ -13,6 +13,8 @@ const MainHeader = () => {
                 justifyContent: 'center',
                 paddingHorizontal: 20,
                 paddingVertical: 10,
+                elevation: 1,
+                zIndex: 10
             }}>
             <Text style={{fontSize: 20, fontWeight: 'bold', color: 'black'}}>
                 Recipe Book
