@@ -6,9 +6,9 @@ import Card from '../components/home/Card';
 import {GlobalVariable} from '../context/AppContext';
 
 const HomeScreen = () => {
+    const {added, setAdded, fetchFavoriteList, favoriteList} = GlobalVariable();
     const [posts, setPosts] = useState(null);
     const [loading, setLoading] = useState(true);
-    const {added, setAdded} = GlobalVariable();
 
     const fetchPosts = async () => {
         try {
@@ -41,14 +41,20 @@ const HomeScreen = () => {
             console.log(error);
         }
     };
+
     useEffect(() => {
         fetchPosts();
+        fetchFavoriteList();
     }, []);
 
     useEffect(() => {
         fetchPosts();
         setAdded(false);
     }, [added]);
+
+    useEffect(() => {
+        fetchPosts();
+    }, [favoriteList]);
 
     if (loading) {
         return (
@@ -66,12 +72,12 @@ const HomeScreen = () => {
             </View>
         );
     }
+
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: '#eee'}}>
             <MainHeader />
             <FlatList
                 data={posts}
-                extraData={posts}
                 renderItem={({item}) => {
                     return (
                         <View style={{paddingHorizontal: 5, paddingTop: 10}}>

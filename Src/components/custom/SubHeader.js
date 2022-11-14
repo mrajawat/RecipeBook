@@ -11,7 +11,7 @@ const SubHeader = ({title}) => {
                 flexDirection: 'row',
                 backgroundColor: '#fff',
                 justifyContent: 'space-between',
-                paddingHorizontal: 20,
+                paddingHorizontal: 10,
                 paddingVertical: 5,
             }}>
             <Ionicons

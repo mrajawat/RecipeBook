@@ -10,10 +10,27 @@ import {
     View,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {GlobalVariable} from '../../context/AppContext';
 
 const Card = ({data}) => {
-    const [like, setLike] = useState(false);
     const navigation = useNavigation();
+    let [like, setLike] = useState(false);
+    const {favoriteList, setFavoriteList} = GlobalVariable();
+
+    favoriteList.forEach(item => {
+        if (item == data.postId) like = true;
+    });
+
+    const likeButton = li => {
+        setLike(li);
+        let list = [...favoriteList];
+        let index = list.indexOf(data.postId);
+        if (index !== -1) list.splice(index, 1);
+
+        li ? list.push(data.postId) : null;
+
+        setFavoriteList([...list]);
+    };
 
     return (
         <Pressable
@@ -33,12 +50,12 @@ const Card = ({data}) => {
                 <Text style={styles.Text}>{data.recipe}</Text>
             </View>
             <TouchableOpacity
-                onPress={() => setLike(!like)}
+                onPress={() => likeButton(!like)}
                 activeOpacity={0.8}
                 style={styles.Icon}>
                 <Ionicons
                     name={like ? 'heart' : 'heart-outline'}
-                    size={35}
+                    size={30}
                     color={like ? 'red' : 'black'}
                 />
             </TouchableOpacity>
@@ -86,10 +103,17 @@ const styles = StyleSheet.create({
         height: 42,
     },
     Icon: {
+        width: 35,
+        height: 35,
         position: 'absolute',
         top: 10,
         right: 10,
         zIndex: 10,
         elevation: 5,
+        backgroundColor: 'white',
+        borderRadius: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 2,
     },
 });

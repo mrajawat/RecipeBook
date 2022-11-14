@@ -1,16 +1,19 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
-import React, {createContext, useContext, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import {Alert} from 'react-native';
 
 const AppContext = createContext();
 
 export const AppProvider = ({children}) => {
     const [user, setUser] = useState(null);
+    
+    
     const [uploading, setUploading] = useState(false);
     const [transferred, setTransferred] = useState(0);
-    const [added, setAdded] = useState(false)
+    const [added, setAdded] = useState(false);
+    const [favoriteList, setFavoriteList] = useState([]);
 
     const register = async (email, password, name) => {
         try {
@@ -22,7 +25,7 @@ export const AppProvider = ({children}) => {
                 name: name,
                 email: result.user.email,
                 uid: result.user.uid,
-                favorite:[]
+                favorite: [],
             });
         } catch (error) {
             console.log(error);
@@ -82,14 +85,47 @@ export const AppProvider = ({children}) => {
                 })
                 .then(() => console.log('Post Added'))
                 .catch(err => console.log(err));
-            
+
             setUploading(false);
-            Alert.alert('Recipe Uploaded!', 'Your recipe uploaded successfully');
+            Alert.alert(
+                'Recipe Uploaded!',
+                'Your recipe uploaded successfully',
+            );
             setAdded(true);
         } catch (error) {
             console.log(error);
         }
     };
+
+    const addFavorite = async list => {
+        try {
+            await firestore().collection('users').doc(user.uid).update({
+                favorite: list,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const fetchFavoriteList = async () => {
+        try {
+            await firestore()
+                .collection('users')
+                .doc(user.uid)
+                .get()
+                .then(querySnapshot => {
+                    const {favorite} = querySnapshot.data();
+                    setFavoriteList([...favorite]);
+                });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
+    useEffect(() => {
+        if (user != null) addFavorite(favoriteList);
+    }, [favoriteList]);
 
     return (
         <AppContext.Provider
@@ -104,6 +140,10 @@ export const AppProvider = ({children}) => {
                 transferred,
                 added,
                 setAdded,
+                favoriteList,
+                setFavoriteList,
+                addFavorite,
+                fetchFavoriteList,
             }}>
             {children}
         </AppContext.Provider>
