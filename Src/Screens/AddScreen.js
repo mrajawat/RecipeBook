@@ -67,6 +67,7 @@ const AddScreen = () => {
                             style={styles.TextInput}
                             placeholder="Enter Heading"
                             autoCapitalize="words"
+                            autoCorrect={false}
                             keyboardType="default"
                             value={heading}
                             onChangeText={text => setHeading(text)}
