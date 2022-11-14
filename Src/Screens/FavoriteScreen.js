@@ -11,14 +11,12 @@ import Card from '../components/home/Card';
 import {GlobalVariable} from '../context/AppContext';
 
 const FavoriteScreen = () => {
-    const {favoriteList, fetchFavoriteList} =
-        GlobalVariable();
+    const {favoriteList, fetchFavoriteList} = GlobalVariable();
     const [posts, setPosts] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const fetchFavoritePosts = async () => {
         try {
-            setLoading(true);
             let list = [];
             await favoriteList.map(async postId => {
                 await firestore()
@@ -29,7 +27,7 @@ const FavoriteScreen = () => {
                         if (doc.exists) {
                             const {userId, heading, recipe, image, postTime} =
                                 doc.data();
-                            list.push({
+                                list.push({
                                 postId: doc.id,
                                 userId,
                                 heading,
@@ -42,7 +40,10 @@ const FavoriteScreen = () => {
                     });
             });
 
+            if (loading) {
                 setLoading(false);
+            }
+
         } catch (error) {
             console.log(error);
         }
