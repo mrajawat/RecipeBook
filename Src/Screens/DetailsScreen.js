@@ -3,6 +3,7 @@ import React from 'react'
 import NavHeader from '../HeaderCustom/NavHeader'
 
 const DetailsScreen = () => {
+
     return (
         <View style={{ flex: 1 }}>
             <NavHeader />
