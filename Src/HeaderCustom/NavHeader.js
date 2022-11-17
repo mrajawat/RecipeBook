@@ -5,6 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import DetailsScreen from '../Screens/DetailsScreen'
 
 const NavHeader = () => {
+  //dimensions width,height
   const { width, height } = Dimensions.get('window');
   return (
     <View style={{
